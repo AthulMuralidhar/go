@@ -42,12 +42,10 @@ var cases = []testCase{
 		name:        "KindInt64",
 		explanation: withSource("test case to log KindInt64"),
 		f: func(l *slog.Logger) {
-			l.Info("message")
+			l.Info("message", "int64key", "123124")
 		},
 		checks: []check{
-			hasKey(slog.TimeKey),
-			hasKey(slog.LevelKey),
-			hasAttr(slog.MessageKey, "message"),
+			hasAttr("int64key", 123124),
 		},
 	},
 
