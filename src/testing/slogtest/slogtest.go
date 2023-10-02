@@ -37,9 +37,9 @@ type testCase struct {
 // here's the main issue https://github.com/golang/go/issues/62280
 
 var cases = []testCase{
+
 	{
-		// some value types:KindInt64 , KindUint64, KindFloat64, KindBool, KindDuration, KindTime
-		name:        "KindInt64",
+		name:        "a Record with an empty PC",
 		explanation: withSource("test case to log KindInt64"),
 		f: func(l *slog.Logger) {
 			l.Info("message", "int64key", "123124")
