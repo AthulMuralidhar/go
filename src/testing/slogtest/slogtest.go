@@ -33,7 +33,22 @@ type testCase struct {
 	checks []check
 }
 
+// PERSONAL DEV NOTES:
+// here's the main issue https://github.com/golang/go/issues/62280
+
 var cases = []testCase{
+
+	{
+		name:        "a Record with an empty PC",
+		explanation: withSource("test case to log KindInt64"),
+		f: func(l *slog.Logger) {
+			l.Info("message", "int64key", "123124")
+		},
+		checks: []check{
+			hasAttr("int64key", 123124),
+		},
+	},
+
 	{
 		name:        "built-ins",
 		explanation: withSource("this test expects slog.TimeKey, slog.LevelKey and slog.MessageKey"),
